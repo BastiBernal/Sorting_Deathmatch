@@ -3,6 +3,7 @@
 #include <fstream>
 #include <chrono>
 #include "utils.hpp"
+#include "animation.hpp"
 
 using namespace std;
 
@@ -18,6 +19,10 @@ vector<int> readFile(const string& archivo) {
         exit(1);
     }
 
+    // Iniciar animación de lectura
+    SimpleAnimator anim;
+    anim.start();
+
     vector<int> data;
     int valor;
 
@@ -26,13 +31,17 @@ vector<int> readFile(const string& archivo) {
         data.push_back(valor);
     }
 
+    file.close();
+
     // Verificar si se leyeron los valores correctamente
     if (data.size() < 1) {
         cerr << "Error: El archivo no contiene suficientes datos." << endl;
         exit(1);
     }
 
-    file.close();
+    // Terminar animación de lectura
+    anim.end("Archivo leído con éxito.");
+
     return data;
 }
 
