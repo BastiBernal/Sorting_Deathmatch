@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 // Función para fusionar dos subarreglos
 void merge(vector<int>& array, int left, int mid, int right) {
     int n1 = mid - left + 1;

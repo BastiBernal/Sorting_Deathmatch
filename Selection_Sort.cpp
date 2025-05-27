@@ -4,6 +4,8 @@
 
 using namespace std;
 
+
+// Función para ordenar un vector usando Selection Sort
 void selectionSort(vector<int>& arr) {
     int n = arr.size();
     for (int i = 0; i < n - 1; i++) {
