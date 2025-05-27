@@ -33,7 +33,7 @@ int main() {
     // Iniciar el temporizador
     startTimer();
 
-    // Ordenar el vector usando Insertion Sort
+    // Ordenar el vector usando Selection Sort
     selectionSort(data);
 
     // Detener el temporizador

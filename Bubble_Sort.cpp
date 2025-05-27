@@ -35,7 +35,7 @@ int main() {
     // Iniciar el temporizador
     startTimer();
 
-    // Ordenar el vector usando Insertion Sort
+    // Ordenar el vector usando Bubble Sort
     bubbleSortOptimized(data);
 
     // Detener el temporizador
