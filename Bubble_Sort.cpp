@@ -1,6 +1,5 @@
-#include <iostream>
 #include <vector>
-#include "utils.hpp"
+#include "Bubble_Sort.hpp"
 
 using namespace std;
 
@@ -23,28 +22,4 @@ void bubbleSortOptimized(vector<int>& arr) {
             break;
         }
     }
-}
-
-int main() {
-    // Leer el archivo de entrada
-    cout << "Ingrese el nombre del archivo de entrada: ";
-    string archivo;
-    cin >> archivo;
-    vector<int> data = readFile(archivo);
-
-    // Iniciar el temporizador
-    startTimer();
-
-    // Ordenar el vector usando Bubble Sort
-    bubbleSortOptimized(data);
-
-    // Detener el temporizador
-    stopTimer();
-
-    // Verificar si el vector está ordenado
-    if (!isSorted(data)) {
-        cout << "Error: El vector no está ordenado correctamente." << endl;
-    }
-    
-    return 0;
 }

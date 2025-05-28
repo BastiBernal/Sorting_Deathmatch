@@ -1,11 +1,10 @@
-#include <iostream>
 #include <vector>
-
-#include "utils.hpp"
+#include "Radix_Sort.hpp"
 
 using namespace std;
 
 
+namespace {
 // Función para encontrar el máximo valor en un vector
 int getMax(const vector<int>& arr) {
     if (arr.empty()) return 0;
@@ -59,6 +58,7 @@ void radixSort(vector<int>& arr) {
         countingSort(arr, exp);
     }
 }
+}
 
 
 // Función para adaptar el Radix Sort para números negativos
@@ -84,28 +84,4 @@ void radixSortWithNegatives(vector<int>& arr) {
     arr.clear();
     arr.insert(arr.end(), negatives.rbegin(), negatives.rend());
     arr.insert(arr.end(), positives.begin(), positives.end());
-}
-
-int main() {
-    // Leer el archivo de entrada
-    cout << "Ingrese el nombre del archivo de entrada: ";
-    string archivo;
-    cin >> archivo;
-    vector<int> data = readFile(archivo);
-
-    // Iniciar el temporizador
-    startTimer();
-
-    // Ordenar el vector usando Radix Sort
-    radixSortWithNegatives(data);
-
-    // Detener el temporizador
-    stopTimer();
-
-    // Verificar si el vector está ordenado
-    if (!isSorted(data)) {
-        cout << "Error: El vector no está ordenado correctamente." << endl;
-    }
-
-    return 0;
 }

@@ -21,7 +21,7 @@ vector<int> readFile(const string& archivo) {
 
     // Iniciar animación de lectura
     SimpleAnimator anim;
-    anim.start();
+    //anim.start();
 
     vector<int> data;
     int valor;
@@ -40,7 +40,7 @@ vector<int> readFile(const string& archivo) {
     }
 
     // Terminar animación de lectura
-    anim.end("Archivo leído con éxito.");
+    //anim.end("Archivo leído con éxito.");
 
     return data;
 }
@@ -54,7 +54,7 @@ void printVector(const vector<int>& vec) {
     cout << endl;
 }
 void startTimer() {
-    cout << "Temporizador iniciado." << endl;
+    //cout << "Temporizador iniciado." << endl;
     startTime = chrono::high_resolution_clock::now();
 }
 
@@ -62,9 +62,13 @@ void startTimer() {
 // Función para detener temporizador y mostrar el tiempo transcurrido
 void stopTimer() {
     auto endTime = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<chrono::microseconds>(endTime - startTime);
-    auto durationSeconds = chrono::duration_cast<chrono::seconds>(endTime - startTime);
-    cout << "Tiempo transcurrido: " << duration.count() << " microsegundos (" << durationSeconds.count() << " segundos)." << endl;
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(endTime - startTime);
+    //auto durationSeconds = chrono::duration_cast<chrono::seconds>(endTime - startTime);
+    //cout << "Tiempo transcurrido: " << duration.count() << " nanosegundos (" << durationSeconds.count() << " segundos)." << endl;
+
+    if (duration.count() == 0) cerr << "ADVERTENCIA: El tiempo medido es igual a 0 ns." << endl;
+
+    cout << duration.count() << endl; // Imprimir solo el tiempo en nanosegundos para la exportación a CSV
     startTime = endTime; // Reiniciar el temporizador para la próxima vez
 }
 
