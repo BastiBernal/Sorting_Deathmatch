@@ -1,20 +1,22 @@
 #include <vector>
-#include "utils.hpp"
+#include <thread>
 #include "Bitonic_Sort.hpp"
 
 using namespace std;
 
+
+namespace {    
+// Definimos constantes para el ordenamiento ascendente y descendente
 #define ASCENDING true
 #define DESCENDING false
 
+const int MAX_DEPTH = 4; // Profundidad máxima de la recursión
 
-namespace {
-// Función para fusionar dos mitades de un arreglo bitónico
+// Función para fusionar dos mitades de un arreglo bitónico (secuencial)
 void bitonicMerge(vector<int>& arr, int low, int cnt, bool dir) {
     if (cnt > 1) {
         int k = cnt / 2;
-        
-        #pragma omp parallel for
+        // Comparar y ordenar los elementos
         for (int i = low; i < low + k; ++i) {
             if ((dir == ASCENDING && arr[i] > arr[i + k]) || 
                 (dir == DESCENDING && arr[i] < arr[i + k])) {
@@ -22,24 +24,26 @@ void bitonicMerge(vector<int>& arr, int low, int cnt, bool dir) {
             }
         }
 
+        // Llamada recursiva para fusionar las dos mitades
         bitonicMerge(arr, low, k, dir);
         bitonicMerge(arr, low + k, k, dir);
     }
 }
 
-// Función recursiva para realizar el Bitonic Sort
-void bitonicSort(vector<int>& arr, int low, int cnt, bool dir) {
+// Función recursiva para realizar el Bitonic Sort con hilos
+void bitonicSort(vector<int>& arr, int low, int cnt, bool dir, int depth = 0) {
     if (cnt > 1) {
         int k = cnt / 2;
 
-        // Creamos paralelismo en las dos mitades del bitonic sort
-        #pragma omp parallel sections
-        {
-            #pragma omp section
-            bitonicSort(arr, low, k, ASCENDING); // Primera mitad en orden ascendente
-
-            #pragma omp section
-            bitonicSort(arr, low + k, k, DESCENDING); // Segunda mitad en orden descendente
+        if (depth < MAX_DEPTH) {
+            thread t1(bitonicSort, ref(arr), low, k, ASCENDING, depth + 1);
+            thread t2(bitonicSort, ref(arr), low + k, k, DESCENDING, depth + 1);
+            t1.join();
+            t2.join();
+        } else {
+            // Si alcanzamos la profundidad máxima, hacemos la ordenación secuencial
+            bitonicSort(arr, low, k, ASCENDING, depth + 1);
+            bitonicSort(arr, low + k, k, DESCENDING, depth + 1);
         }
 
         // Fusionamos las dos mitades
@@ -71,7 +75,6 @@ void bitonicSort(vector<int>& arr) {
 
     // Aseguramos que el tamaño del vector sea una potencia de 2
     if (!isPowerOfTwo(n)) {
-        cerr << "ADVERTENCIA: El tamaño del vector debe ser una potencia de 2 para Bitonic Sort, el arreglo se rellenará con ceros." << endl;
         int nextPower = nextPowerOfTwo(n);
         arr.resize(nextPower, 0); // Rellenamos con ceros hasta la siguiente potencia de 2
         n = arr.size(); // Actualizamos el tamaño del vector
