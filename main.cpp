@@ -1,4 +1,4 @@
-// Compilación: g++ main.cpp Bubble_Sort.cpp Insertion_Sort.cpp Merge_Sort.cpp Radix_Sort.cpp Selection_Sort.cpp Shell_Sort.cpp Tim_Sort.cpp utils.cpp -o sorting_app.exe
+// Compilación: g++ main.cpp Bubble_Sort.cpp Insertion_Sort.cpp Merge_Sort.cpp Radix_Sort.cpp Selection_Sort.cpp Shell_Sort.cpp Tim_Sort.cpp Bitonic_Sort.cpp utils.cpp -o sorting_app.exe
 // Ejecución: ./sorting_app.exe <algoritmo> <ArchivoEntrada>
 
 #include <iostream>
@@ -12,6 +12,7 @@
 #include "Selection_Sort.hpp"
 #include "Shell_Sort.hpp"
 #include "Tim_Sort.hpp"
+#include "Bitonic_Sort.hpp"
 
 using namespace std;
 
@@ -50,9 +51,11 @@ int main(int argc, char* argv[]) {
         shellSort(data);
     } else if (algoritmo == "Tim_Sort") {
         timSort(data);
+    } else if (algoritmo == "Bitonic_Sort") {
+        bitonicSort(data);
     } else {
         cerr << "Error: Algoritmo no reconocido." << endl;
-        cerr << "Algoritmos disponibles: Bubble_Sort, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort." << endl;
+        cerr << "Algoritmos disponibles: Bubble_Sort, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort, Bitonic_Sort." << endl;
         return 1;
     }
 
