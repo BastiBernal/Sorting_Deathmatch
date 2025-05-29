@@ -1,10 +1,10 @@
-#include <iostream>
 #include <vector>
-#include "utils.hpp"
+#include "Merge_Sort.hpp"
 
 using namespace std;
 
 
+namespace {
 // Función para fusionar dos subarreglos
 void merge(vector<int>& array, int left, int mid, int right) {
     int n1 = mid - left + 1;
@@ -47,41 +47,26 @@ void merge(vector<int>& array, int left, int mid, int right) {
     }
 }
 
-// Función principal de Merge Sort
-void mergeSort(vector<int>& array, int left, int right) {
+// Implementación interna recursiva de Merge Sort
+void mergeSortImpl(vector<int>& array, int left, int right) {
     if (left < right) {
         // Encontrar el punto medio
         int mid = left + (right - left) / 2;
 
         // Ordenar la primera y segunda mitad
-        mergeSort(array, left, mid);
-        mergeSort(array, mid + 1, right);
+        mergeSortImpl(array, left, mid);
+        mergeSortImpl(array, mid + 1, right);
 
         // Fusionar las dos mitades ordenadas
         merge(array, left, mid, right);
     }
 }
+}
 
-int main() {
-    // Leer el archivo de entrada
-    cout << "Ingrese el nombre del archivo de entrada: ";
-    string archivo;
-    cin >> archivo;
-    vector<int> data = readFile(archivo);
 
-    // Iniciar el temporizador
-    startTimer();
-
-    // Ordenar el vector usando Merge Sort
-    mergeSort(data, 0, data.size() - 1);
-
-    // Detener el temporizador
-    stopTimer();
-
-    // Verificar si el vector está ordenado
-    if (!isSorted(data)) {
-        cout << "Error: El vector no está ordenado correctamente." << endl;
+// Función principal de Merge Sort (wrapper)
+void mergeSort(vector<int>& array) {
+    if (!array.empty()) {
+        mergeSortImpl(array, 0, array.size() - 1);
     }
-    
-    return 0;
 }

@@ -1,6 +1,5 @@
-#include <iostream>
 #include <vector>
-#include "utils.hpp"
+#include "Selection_Sort.hpp"
 
 using namespace std;
 
@@ -21,28 +20,4 @@ void selectionSort(vector<int>& arr) {
         // Intercambiar el elemento mínimo encontrado con el primer elemento del subarreglo no ordenado
         swap(arr[i], arr[minIndex]);
     }
-}
-
-int main() {
-    // Leer el archivo de entrada
-    cout << "Ingrese el nombre del archivo de entrada: ";
-    string archivo;
-    cin >> archivo;
-    vector<int> data = readFile(archivo);
-
-    // Iniciar el temporizador
-    startTimer();
-
-    // Ordenar el vector usando Selection Sort
-    selectionSort(data);
-
-    // Detener el temporizador
-    stopTimer();
-
-    // Verificar si el vector está ordenado
-    if (!isSorted(data)) {
-        cout << "Error: El vector no está ordenado correctamente." << endl;
-    }
-    
-    return 0;
 }

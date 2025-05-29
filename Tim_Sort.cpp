@@ -1,12 +1,12 @@
-#include <iostream>
 #include <vector>
-#include "utils.hpp"
+#include "Tim_Sort.hpp"
 
 using namespace std;
 
 const int RUN = 32; // Tamaño del subarreglo para Insertion Sort
 
 
+namespace {
 // Función para ordenar un vector usando Insertion Sort
 void insertionSort(vector<int>& array, int left = 0, int right = -1) {
     if (right == -1) {
@@ -69,6 +69,8 @@ void merge(vector<int>& array, int left, int mid, int right) {
         k++;
     }
 }
+}
+
 
 // Función principal de Tim Sort
 void timSort(vector<int>& array) {
@@ -91,28 +93,4 @@ void timSort(vector<int>& array) {
             }
         }
     }
-}
-
-int main() {
-    // Leer el archivo de entrada
-    cout << "Ingrese el nombre del archivo de entrada: ";
-    string archivo;
-    cin >> archivo;
-    vector<int> data = readFile(archivo);
-
-    // Iniciar el temporizador
-    startTimer();
-
-    // Ordenar el vector usando Tim Sort
-    timSort(data);
-
-    // Detener el temporizador
-    stopTimer();
-
-    // Verificar si el vector está ordenado
-    if (!isSorted(data)) {
-        cout << "Error: El vector no está ordenado correctamente." << endl;
-    }
-    
-    return 0;
 }
