@@ -9,7 +9,11 @@
 #include "Selection_Sort.hpp"
 #include "Shell_Sort.hpp"
 #include "Tim_Sort.hpp"
+<<<<<<< HEAD
 #include "Bitonic_Sort.hpp"
+=======
+#include "Quick_Sort.hpp"
+>>>>>>> desarrollo_sorting_alg
 
 using namespace std;
 
@@ -48,11 +52,19 @@ int main(int argc, char* argv[]) {
         shellSort(data);
     } else if (algoritmo == "Tim_Sort") {
         timSort(data);
+<<<<<<< HEAD
     } else if (algoritmo == "Bitonic_Sort") {
         bitonicSort(data);
     } else {
         cerr << "Error: Algoritmo no reconocido." << endl;
         cerr << "Algoritmos disponibles: Bubble_Sort, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort, Bitonic_Sort." << endl;
+=======
+    } else if (algoritmo == "Quick_Sort"){
+        quickSort(data);
+    } else {
+        cerr << "Error: Algoritmo no reconocido." << endl;
+        cerr << "Algoritmos disponibles: Bubble_Sort, Quick_Sort, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort." << endl;
+>>>>>>> desarrollo_sorting_alg
         return 1;
     }
 

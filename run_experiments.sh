@@ -1,8 +1,8 @@
 #!/bin/bash
 
 EJECUTABLE=./sorting_app.exe
-ARCHIVOS=("Vector10k")
-ALGORITMOS=("Bubble_Sort" "Insertion_Sort" "Merge_Sort" "Radix_Sort" "Selection_Sort" "Shell_Sort" "Tim_Sort")
+ARCHIVOS=("Vector1k")
+ALGORITMOS=("Bubble_Sort" "Quick_Sort" "Insertion_Sort" "Merge_Sort" "Radix_Sort" "Selection_Sort" "Shell_Sort" "Tim_Sort")
 REPETICIONES=5
 CSV="resultados.csv"
 
