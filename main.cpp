@@ -58,6 +58,9 @@ int main(int argc, char* argv[]) {
     } else if (algoritmo == "Quick_Sort"){
         startTimer();
         quickSort(data);
+    } else if (algoritmo == "Quick_SortV2"){
+        startTimer();
+        quickSort2(data);
     } else if(algoritmo == "Heap_Sort"){
         startTimer();
         heapSort(data);
@@ -66,7 +69,7 @@ int main(int argc, char* argv[]) {
         sort(data.begin(),data.end());
     }else {
         cerr << "Error: Algoritmo no reconocido." << endl;
-        cerr << "Algoritmos disponibles: Bubble_Sort, Quick_Sort, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort, Heap_Sort, STL." << endl;
+        cerr << "Algoritmos disponibles: Bubble_Sort, Quick_Sort, Quick_SortV2, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort, Heap_Sort, STL." << endl;
 
         return 1;
     }
