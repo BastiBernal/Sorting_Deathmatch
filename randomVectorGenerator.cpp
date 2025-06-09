@@ -57,7 +57,6 @@ int main() {
 
     // Generar el vector aleatorio
     vector<int> randomVector = generateRandomVector(size, minValue, maxValue);
-
     // Guardar el vector en un archivo
     saveVectorToFile(randomVector, filename);
 

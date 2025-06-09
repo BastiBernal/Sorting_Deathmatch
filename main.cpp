@@ -80,4 +80,5 @@ int main(int argc, char* argv[]) {
         cerr << "Error: El vector no está ordenado correctamente." << endl;
         return 1;
     }
+    return 0;
 }
