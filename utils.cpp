@@ -3,7 +3,7 @@
 #include <fstream>
 #include <chrono>
 #include "utils.hpp"
-#include "animation.hpp"
+//#include "animation.hpp"
 
 using namespace std;
 
@@ -20,7 +20,7 @@ vector<int> readFile(const string& archivo) {
     }
 
     // Iniciar animación de lectura
-    SimpleAnimator anim;
+    //SimpleAnimator anim;
     //anim.start();
 
     vector<int> data;
@@ -81,4 +81,19 @@ bool isSorted(const vector<int>& vec) {
         }
     }
     return true; // Si no encontramos ningún desorden, el vector está ordenado
+}
+
+void saveVectorToFile(const vector<int>& vec, const string& filename) {
+    ofstream file(filename);
+    if (!file.is_open()) {
+        cerr << "Error al abrir el archivo: " << filename << endl;
+        exit(1);
+    }
+
+    for (const auto& val : vec) {
+        file << val << " "; // Escribe cada valor en el archivo
+    }
+
+    file.close();
+    cout << "Vector guardado en el archivo: " << filename << endl;
 }

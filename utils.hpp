@@ -12,5 +12,6 @@ void printVector(const std::vector<int>& vec);
 void startTimer();
 void stopTimer();
 bool isSorted(const std::vector<int>& vec);
+void saveVectorToFile(const std::vector<int>& vec, const std::string& filename);
 
 #endif

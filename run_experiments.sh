@@ -1,9 +1,9 @@
 #!/bin/bash
 
 EJECUTABLE=./sorting_app.exe
-ARCHIVOS=("Vector1k")
-ALGORITMOS=("Bubble_Sort" "Quick_Sort" "Insertion_Sort" "Merge_Sort" "Radix_Sort" "Selection_Sort" "Shell_Sort" "Tim_Sort" "Bitonic_Sort" "Quick_Sort")
-REPETICIONES=5
+ARCHIVOS=("vector100kV2" "vector1mV2" "vector5m" "vector10m")
+ALGORITMOS=("Bubble_Sort" "Quick_Sort" "Insertion_Sort" "Merge_Sort" "Radix_Sort" "Selection_Sort" "Shell_Sort" "Tim_Sort" "Heap_Sort" "STL")
+REPETICIONES=20
 CSV="resultados.csv"
 
 echo "Algoritmo;Archivo;Tiempo(ns)" > "$CSV"

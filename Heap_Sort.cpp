@@ -24,18 +24,18 @@ void heapify(vector<int>& arr, int large, int root){
     int r = rightChild(root);
 
     // Si leftChild es mayor intercambia
-    if (l < n && arr[l] > arr[largest])
+    if (l < large && arr[l] > arr[largest])
         largest = l;
 
     // Si rightChild es mayor intercambia
-    if (r < n && arr[r] > arr[largest])
+    if (r < large && arr[r] > arr[largest])
         largest = r;
 
     // Si la raiz no era el mas grande cambiar en cadena
-    if (largest != i) {
-        swap(arr[i], arr[largest]);
+    if (largest != root) {
+        swap(arr[root], arr[largest]);
 
-        heapify(arr, n, largest);
+        heapify(arr, large, largest);
     }
 }
 

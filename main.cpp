@@ -11,6 +11,8 @@
 #include "Tim_Sort.hpp"
 #include "Bitonic_Sort.hpp"
 #include "Quick_Sort.hpp"
+#include "Heap_Sort.hpp"
+#include <algorithm>
 
 using namespace std;
 
@@ -31,31 +33,40 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Comenzar el temporizador
-    startTimer();
-
     // Ordenar los datos según el algoritmo especificado
     if (algoritmo == "Bubble_Sort") {
+        startTimer();
         bubbleSortOptimized(data);
     } else if (algoritmo == "Insertion_Sort") {
+        startTimer();
         insertionSort(data);
     } else if (algoritmo == "Merge_Sort") {
+        startTimer();
         mergeSort(data);
     } else if (algoritmo == "Radix_Sort") {
+        startTimer();
         radixSortWithNegatives(data);
     } else if (algoritmo == "Selection_Sort") {
+        startTimer();
         selectionSort(data);
     } else if (algoritmo == "Shell_Sort") {
+        startTimer();
         shellSort(data);
     } else if (algoritmo == "Tim_Sort") {
+        startTimer();
         timSort(data);
-    } else if (algoritmo == "Bitonic_Sort") {
-        bitonicSort(data);
     } else if (algoritmo == "Quick_Sort"){
+        startTimer();
         quickSort(data);
-    } else {
+    } else if(algoritmo == "Heap_Sort"){
+        startTimer();
+        heapSort(data);
+    } else if(algoritmo == "STL"){
+        startTimer();
+        sort(data.begin(),data.end());
+    }else {
         cerr << "Error: Algoritmo no reconocido." << endl;
-        cerr << "Algoritmos disponibles: Bubble_Sort, Quick_Sort, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort, Bitonic_Sort, Quick_Sort." << endl;
+        cerr << "Algoritmos disponibles: Bubble_Sort, Quick_Sort, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort, Heap_Sort, STL." << endl;
 
         return 1;
     }
