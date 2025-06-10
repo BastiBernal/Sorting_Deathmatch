@@ -3,7 +3,7 @@
 EJECUTABLE=./sorting_app
 COMPILER=g++
 FLAGS="-Wall -Wextra"
-PROGRAMS=("main.cpp" "utils.cpp" "Bubble_Sort.cpp" "Insertion_Sort.cpp" "Merge_Sort.cpp" "Selection_Sort.cpp" "Radix_Sort.cpp" "Shell_Sort.cpp" "Tim_Sort.cpp" "Quick_Sort.cpp" "Heap_Sort.cpp" "Quick_SortV2.cpp")
+PROGRAMS=("main.cpp" "utils.cpp" "Radix_Sort_V2.cpp" "Bubble_Sort.cpp" "Insertion_Sort.cpp" "Merge_Sort.cpp" "Selection_Sort.cpp" "Radix_Sort.cpp" "Shell_Sort.cpp" "Tim_Sort.cpp" "Quick_Sort.cpp" "Heap_Sort.cpp" "Quick_SortV2.cpp")
 
 # Unificar el nombre de los archivos fuente
 SRC_FILES="${PROGRAMS[@]}"
