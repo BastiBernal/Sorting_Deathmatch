@@ -13,6 +13,7 @@
 #include "Quick_Sort.hpp"
 #include "Heap_Sort.hpp"
 #include "Radix_Sort_V2.hpp"
+#include "Radix_Sort_V3.hpp"
 #include <algorithm>
 
 using namespace std;
@@ -68,12 +69,15 @@ int main(int argc, char* argv[]) {
     } else if (algoritmo == "Radix_Sort_V2"){
         startTimer();
         radixSortWithNegativesV2(data);
+    } else if (algoritmo == "Radix_Sort_V3"){
+        startTimer();
+        radixSortWithNegativesV3(data);
     } else if(algoritmo == "STL"){
         startTimer();
         sort(data.begin(),data.end());
-    }else {
+    } else {
         cerr << "Error: Algoritmo no reconocido." << endl;
-        cerr << "Algoritmos disponibles: Bubble_Sort, Quick_Sort, Quick_SortV2, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort, Heap_Sort, STL, Radix_Sort_V2." << endl;
+        cerr << "Algoritmos disponibles: Bubble_Sort, Quick_Sort, Quick_SortV2, Insertion_Sort, Merge_Sort, Radix_Sort, Selection_Sort, Shell_Sort, Tim_Sort, Heap_Sort, STL, Radix_Sort_V2, Radix_Sort_V3." << endl;
 
         return 1;
     }
